@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
+import { Button, Heading, HStack, VStack } from '@chakra-ui/react';
 
 const useCounter = () => {
   const count = useSelector((state) => state.count)
@@ -21,14 +22,16 @@ const useCounter = () => {
 const Counter = () => {
   const { count, increment, decrement, reset } = useCounter()
   return (
-    <div>
-      <h1>
+    <VStack align="flex-start">
+      <Heading>
         Count: <span>{count}</span>
-      </h1>
-      <button onClick={increment}>+1</button>
-      <button onClick={decrement}>-1</button>
-      <button onClick={reset}>Reset</button>
-    </div>
+      </Heading>
+      <HStack>
+      <Button onClick={increment}>+1</Button>
+      <Button onClick={decrement}>-1</Button>
+      <Button onClick={reset}>Reset</Button>
+      </HStack>
+    </VStack>
   )
 }
 

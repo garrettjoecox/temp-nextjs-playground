@@ -1,7 +1,13 @@
+import React from 'react';
+import { Layout } from '../components/layout';
 import Page from '../components/page'
 
 export default function SSG() {
-  return <Page />
+  return (
+    <Layout>
+      <Page />
+    </Layout>
+  );
 }
 
 // If you build and start the app, the date returned here will have the same
@@ -13,7 +19,7 @@ export function getStaticProps() {
     props: {
       initialReduxState: {
         lastUpdate: Date.now(),
-        light: false,
+        source: 'server',
       },
     },
   }

@@ -1,3 +1,4 @@
+import { VStack } from '@chakra-ui/layout'
 import { useDispatch } from 'react-redux'
 import useInterval from '../lib/useInterval'
 import Clock from './clock'
@@ -11,16 +12,16 @@ export default function Page() {
   useInterval(() => {
     dispatch({
       type: 'TICK',
-      light: true,
+      source: 'client',
       lastUpdate: Date.now(),
     })
   }, 1000)
 
   return (
-    <>
+    <VStack alignItems="flex-start">
       <Nav />
       <Clock />
       <Counter />
-    </>
+    </VStack>
   )
 }

@@ -6,7 +6,7 @@ let store
 
 const initialState = {
   lastUpdate: 0,
-  light: false,
+  source: 'N/A',
   count: 0,
 }
 
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         lastUpdate: action.lastUpdate,
-        light: !!action.light,
+        source: action.source,
       }
     case 'INCREMENT':
       return {

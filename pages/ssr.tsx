@@ -1,8 +1,14 @@
+import React from 'react';
+import { Layout } from '../components/layout';
 import Page from '../components/page'
 import { initializeStore } from '../store'
 
 export default function SSR() {
-  return <Page />
+  return (
+    <Layout>
+      <Page />
+    </Layout>
+  );
 }
 
 // The date returned here will be different for every request that hits the page,
@@ -14,7 +20,7 @@ export function getServerSideProps() {
 
   dispatch({
     type: 'TICK',
-    light: false,
+    source: 'server',
     lastUpdate: Date.now(),
   })
 

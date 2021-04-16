@@ -1,25 +1,23 @@
+import { Button } from '@chakra-ui/button'
+import { HStack } from '@chakra-ui/layout';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const Nav = () => {
+  const router = useRouter();
+
   return (
-    <nav>
+    <HStack>
       <Link href="/">
-        <a>Index</a>
+        <a><Button colorScheme={router.route === '/' ? 'blue' : 'gray'}>Static</Button></a>
       </Link>
       <Link href="/ssg">
-        <a>SSG</a>
+        <a><Button colorScheme={router.route === '/ssg' ? 'blue' : 'gray'}>SSG</Button></a>
       </Link>
       <Link href="/ssr">
-        <a>SSR</a>
+        <a><Button colorScheme={router.route === '/ssr' ? 'blue' : 'gray'}>SSR</Button></a>
       </Link>
-      <style jsx>
-        {`
-          a {
-            margin-right: 25px;
-          }
-        `}
-      </style>
-    </nav>
+    </HStack>
   )
 }
 

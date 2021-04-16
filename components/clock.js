@@ -1,10 +1,11 @@
+import { VStack, Text } from '@chakra-ui/layout'
 import { useSelector, shallowEqual } from 'react-redux'
 
 const useClock = () => {
   return useSelector(
     (state) => ({
       lastUpdate: state.lastUpdate,
-      light: state.light,
+      source: state.source,
     }),
     shallowEqual
   )
@@ -16,24 +17,16 @@ const formatTime = (time) => {
 }
 
 const Clock = () => {
-  const { lastUpdate, light } = useClock()
+  const { lastUpdate, source } = useClock()
   return (
-    <div className={light ? 'light' : ''}>
-      {formatTime(lastUpdate)}
-      <style jsx>{`
-        div {
-          padding: 15px;
-          display: inline-block;
-          color: #82fa58;
-          font: 50px menlo, monaco, monospace;
-          background-color: #000;
-        }
-
-        .light {
-          background-color: #999;
-        }
-      `}</style>
-    </div>
+    <VStack alignItems="flex-start">
+      <Text>
+        Source: <Text display="inline" fontWeight="bold">{source}</Text>
+      </Text>
+      <Text>
+        at: <Text display="inline" fontWeight="bold">{formatTime(lastUpdate)}</Text>
+      </Text>
+    </VStack>
   )
 }
 
